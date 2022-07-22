@@ -18,7 +18,7 @@ namespace UserManager.Models.Table
 
         public void AddToTable(User obj)
         {
-            var sql = $"INSERT INTO table_account (first_name, last_name, email, photo) VALUES ('{obj.FirstName}', '{obj.LastName}', '{obj.Email}', '{obj.PhotoUrl}')";
+            var sql = $"INSERT INTO table_user (first_name, last_name, email, photo) VALUES ('{obj.FirstName}', '{obj.LastName}', '{obj.Email}', '{obj.PhotoUrl}')";
             NonQuery(sql);
         }
 
@@ -41,7 +41,7 @@ namespace UserManager.Models.Table
                     });
                 }
             }
-            db.Close();
+            _db.Close();
             return list;
         }
     }

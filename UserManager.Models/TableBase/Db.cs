@@ -25,6 +25,7 @@ namespace UserManager.Models.TableBase
         protected void Query(string sql)
         {
             _db.Open();
+            _comand.CommandText=sql;
             _result = _comand.ExecuteReader();
         }
         protected void NonQuery(string sql)

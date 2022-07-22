@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UserManager.Models
+namespace UserManager.Models.Item
 {
     public class Account
     {

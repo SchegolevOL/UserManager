@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using Microsoft.Data.Sqlite;//Sqlite
 
-namespace UserManager.Models
+namespace UserManager.Models.TableBase
 {
     public abstract class Db
     {
@@ -23,12 +23,12 @@ namespace UserManager.Models
             };
         }
         protected void Query(string sql)
-        {            
-            _db.Open();           
+        {
+            _db.Open();
             _result = _comand.ExecuteReader();
         }
         protected void NonQuery(string sql)
-        {            
+        {
             _db.Open();
             _comand.ExecuteNonQuery();
             _db.Close();

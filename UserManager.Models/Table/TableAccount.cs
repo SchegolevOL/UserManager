@@ -10,7 +10,7 @@ using UserManager.Models.Item;
 
 namespace UserManager.Models.Table
 {
-    internal class TableAccount : Db, IGetTable<Account>, IAddToTable<Account>
+    public class TableAccount : Db, IGetTable<Account>, IAddToTable<Account>
     {
         public TableAccount() : base()
         {
@@ -27,7 +27,6 @@ namespace UserManager.Models.Table
         {
             var list = new List<Account>();
             var sql = "SELECT * FROM table_account";
-
             Query(sql);
             if (_result.HasRows)
             {
@@ -36,8 +35,8 @@ namespace UserManager.Models.Table
                     list.Add(new Account
                     {
                         Id = _result.GetInt32("account_id"),
-                        Login = _result.GetString("account_login"),
-                        Password = _result.GetString("account_password"),
+                        Login = _result.GetString("login"),
+                        Password = _result.GetString("password"),
                         RoleId = _result.GetInt32("role_id"),
                         IsActive = _result.GetBoolean("is_active")
                     });

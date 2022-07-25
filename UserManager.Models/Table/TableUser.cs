@@ -10,7 +10,7 @@ using UserManager.Models.Item;
 
 namespace UserManager.Models.Table
 {
-    internal class TableUser : Db, IGetTable<User>, IAddToTable<User>
+    public class TableUser : Db, IGetTable<User>, IAddToTable<User>
     {
         public TableUser() : base()
         {

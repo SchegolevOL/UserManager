@@ -17,7 +17,6 @@ namespace UserManager.Models.Item
         public override bool Equals(object? obj)
         {
             return obj is User user &&
-                   Id == user.Id &&
                    FirstName == user.FirstName &&
                    LastName == user.LastName &&
                    Email == user.Email &&
@@ -34,7 +33,7 @@ namespace UserManager.Models.Item
             {
                 return true;
             }
-            return Id == other.Id &&
+            return 
                 FirstName == other.FirstName &&
                 LastName == other.LastName &&
                 Email == other.Email && 
@@ -43,7 +42,7 @@ namespace UserManager.Models.Item
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Id, FirstName, LastName, Email, PhotoUrl);
+            return HashCode.Combine(FirstName, LastName, Email, PhotoUrl);
         }
 
        

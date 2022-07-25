@@ -1,0 +1,88 @@
+﻿<Window x:Class="UserManager.App.Windows.Authorization.AuthorizationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UserManager.App.Windows.Authorization"
+        mc:Ignorable="d"
+        Title="UserManager.Авторизация" Height="350" Width="450"
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ResourceDictionary Source="AuthorizationWindowStyle.xaml"/>
+    </Window.Resources>
+    <StackPanel>
+        <Label x:Name="Title"
+               Content="Авторизация"
+               Style="{DynamicResource StyleTitle}"/>
+
+
+        <StackPanel Orientation="Horizontal">
+            <Label x:Name="LabelLogin"
+                   Content="_Login"
+                   Target="{Binding ElementName=InputLogin}"
+                   Style="{DynamicResource StyleLable}">                
+            </Label>
+            <TextBox x:Name="InputLogin"
+                       Style="{DynamicResource StyleInput}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label x:Name="LabelPassword"
+                   Content="_Password"
+                   Target="{Binding ElementName=InputPassword}"
+                   Style="{DynamicResource StyleLable}">
+            </Label>
+            <PasswordBox x:Name="InputPassword"
+                       Style="{DynamicResource StylePassword}"/>
+        </StackPanel>
+        <StackPanel Style="{DynamicResource StyleStacPanelCentr}">
+            <Button x:Name="ButtonClear"
+                    Content="Очистить">
+                <Button.Style>
+                    <Style TargetType="Button"
+                           BasedOn="{StaticResource StyleButtonClear}">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=InputLogin, Path=Text.Lenght}"
+                                               Value="0"/>
+                                    <Condition Binding="{Binding ElementName=InputPassword, Path=Password.Lenght}"
+                                               Value="0"/>
+                                </MultiDataTrigger.Conditions>
+                                <MultiDataTrigger.Setters>
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </MultiDataTrigger.Setters>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <Button x:Name="ButtonLogIn"
+                    Content="Войти">
+                <Button.Style>
+                    <Style TargetType="Button"
+                           BasedOn="{StaticResource StyleButtonLogIn}">
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=InputLogin, Path=Text}"
+                                               Value=""/>
+                                    <Condition Binding="{Binding ElementName=InputPassword, Path=Text}"
+                                               Value="{x:Null}"/>
+                                </MultiDataTrigger.Conditions>
+                                <MultiDataTrigger.Setters>
+                                    <Setter Property="IsEnabled" Value="False"/>
+                                </MultiDataTrigger.Setters>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>           
+        </StackPanel> 
+        <StackPanel Style="{DynamicResource StyleStacPanelLeft}">
+                <Button x:Name="ButtonRecoverPassword"
+                    Content="Востановить пароль"/>
+                <Button x:Name="ButtonRegister"
+                    Content="Зарегистрироваться"/>
+            </StackPanel>
+    </StackPanel>
+</Window>

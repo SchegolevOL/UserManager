@@ -29,7 +29,7 @@ namespace UserManager.Models.Item
             {
                 return true;
             }
-            return Id == other.Id &&
+            return 
                 Login == other.Login &&
                 Password == other.Password &&
                 RoleId == other.RoleId &&
@@ -38,7 +38,7 @@ namespace UserManager.Models.Item
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Id, Login, Password, RoleId, IsActive);
+            return HashCode.Combine(Login, Password, RoleId, IsActive);
         }
 
         

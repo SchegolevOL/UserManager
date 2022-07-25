@@ -7,11 +7,12 @@ namespace UserManager.Moduls.Test
 {
     public class TableUserTest
     {
-
-        [Fact]
-        public void GetTable_Test()
+        private List<User> _expected;
+        private TableUser _tableUser;
+        public TableUserTest()
         {
-            var expected = new List<User>
+            _tableUser = new TableUser();
+            _expected = new List<User>
             {
                 new User()
                 {
@@ -31,9 +32,29 @@ namespace UserManager.Moduls.Test
                     PhotoUrl = "url"
                 }
             };
-            var tableUser = new TableUser();
-            var actual = tableUser.GetTable();
-            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void GetTable_Test()
+        {            
+            var actual = _tableUser.GetTable();
+            Assert.Equal(_expected, actual);
+        }
+
+        [Fact]
+        public void AddToTableTest()
+        {
+            var user = new User
+            {
+                FirstName = "user",
+                LastName = "ananim",
+                Email = "user@admin.ru",
+                PhotoUrl= "url"
+            };
+            _expected.Add(user);
+            _tableUser.AddToTable(user);
+            var actual = _tableUser.GetTable();
+            Assert.Equal(_expected, actual);
         }
     }
 }

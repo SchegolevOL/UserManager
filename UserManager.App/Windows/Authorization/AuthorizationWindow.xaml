@@ -36,17 +36,18 @@
         </StackPanel>
         <StackPanel Style="{DynamicResource StyleStacPanelCentr}">
             <Button x:Name="ButtonClear"
-                    Content="Очистить">
+                    Content="Очистить"
+                    Click="ButtonClear_Click">
                 <Button.Style>
                     <Style TargetType="Button"
                            BasedOn="{StaticResource StyleButtonClear}">
                         <Style.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding ElementName=InputLogin, Path=Text.Lenght}"
-                                               Value="0"/>
-                                    <Condition Binding="{Binding ElementName=InputPassword, Path=Password.Lenght}"
-                                               Value="0"/>
+                                    <Condition Binding="{Binding ElementName=InputLogin, Path=Text}"
+                                               Value=""/>
+                                    <Condition Binding="{Binding ElementName=InputPassword, Path=Password}"
+                                               Value=""/>
                                 </MultiDataTrigger.Conditions>
                                 <MultiDataTrigger.Setters>
                                     <Setter Property="IsEnabled" Value="False"/>
@@ -57,7 +58,8 @@
                 </Button.Style>
             </Button>
             <Button x:Name="ButtonLogIn"
-                    Content="Войти">
+                    Content="Войти"
+                    Click="ButtonLogIn_Click">
                 <Button.Style>
                     <Style TargetType="Button"
                            BasedOn="{StaticResource StyleButtonLogIn}">
@@ -66,7 +68,7 @@
                                 <MultiDataTrigger.Conditions>
                                     <Condition Binding="{Binding ElementName=InputLogin, Path=Text}"
                                                Value=""/>
-                                    <Condition Binding="{Binding ElementName=InputPassword, Path=Text}"
+                                    <Condition Binding="{Binding ElementName=InputPassword, Path=Pasword}"
                                                Value="{x:Null}"/>
                                 </MultiDataTrigger.Conditions>
                                 <MultiDataTrigger.Setters>

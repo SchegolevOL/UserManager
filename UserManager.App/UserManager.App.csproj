@@ -7,4 +7,8 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\UserManager.Models\UserManager.Models.csproj" />
+  </ItemGroup>
+
 </Project>

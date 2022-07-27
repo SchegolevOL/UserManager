@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using UserManager.App.Windows.User;
 using UserManager.Models.Table;
 
 namespace UserManager.App.Windows.Authorization
@@ -48,7 +49,19 @@ namespace UserManager.App.Windows.Authorization
                 MessageBox.Show("Вы успешно авторизовались!!", 
                     "Успешная авторизация", 
                     MessageBoxButton.OK, 
-                    MessageBoxImage.Information);
+                    MessageBoxImage.Information);                
+                var role = new TableRole().GetTable().Find(r => r.Id == account.RoleId);
+                switch(role?.Name)
+                {
+                    case "admin":
+                        new UserWindow().Show();
+
+                        break;
+                    case "user":
+                        new UserWindow().Show();
+                        break;
+                }
+
             }
         }
     }
